@@ -85,4 +85,4 @@ This project is licensed under the **MIT License** – see the `LICENSE` file fo
 
 ## 📬 Contact
 
-Feel free to open an issue on GitHub or contact the author at `gopi.madhavi@example.com`.
+Feel free to open an issue on GitHub or contact the author at 'gopimadhavi07@gmail.com'
