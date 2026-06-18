@@ -1,0 +1,4 @@
+{
+  "name": "Logistics Delay Tracker Dashboard",
+  "description": "Placeholder Power BI file – import this file into Power BI Desktop and connect to logistics_features.csv to recreate the visualizations defined in dashboard_design.md.\n\nThe report should contain the six KPI cards, the six visuals, and the filters as specified.\n\nUse the DAX measures provided in dashboard_design.md for the KPIs."
+}

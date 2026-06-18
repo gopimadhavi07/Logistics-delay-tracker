@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<workbook version="10.5" source-language="en-US" xmlns="http://tableau.com/api">
+  <datasources>
+    <datasource name="logistics_features" caption="logistics_features.csv" inline="true" connection-type="textscan">
+      <connection>
+        <named-connection name="CSV" class="textscan" />
+        <filename>C:/Users/GOPI MADHAVI/OneDrive/Documents/Desktop/Logistics delay tracker/data/logistics_features.csv</filename>
+        <connection-preamble>delimiter=,</connection-preamble>
+      </connection>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name="Executive Dashboard" x="0" y="0" width="1200" height="800" scrollable="true">
+      <!-- KPI Cards -->
+      <view>
+        <view-object type="text" name="Total Orders" value="TOTAL([order_id])" />
+        <view-object type="text" name="Delayed Orders" value="TOTAL(IF [is_delayed] THEN 1 ELSE 0 END)" />
+        <view-object type="text" name="Delay %" value="(TOTAL(IF [is_delayed] THEN 1 ELSE 0 END) / TOTAL([order_id]))*100" />
+        <view-object type="text" name="Avg Delay Days" value="AVG(IF [is_delayed] THEN [delay_duration] END)" />
+        <view-object type="text" name="On‑Time Delivery %" value="100 - ((TOTAL(IF [is_delayed] THEN 1 ELSE 0 END) / TOTAL([order_id]))*100)" />
+        <view-object type="text" name="Revenue Impact" value="SUM(IF [revenue_impact_flag] THEN [revenue_impacted] END)" />
+      </view>
+      <!-- Visuals -->
+      <view name="Monthly Delay Trend" type="line">
+        <axis field="month" />
+        <measure field="is_delayed" aggregation="avg" label="Delay %" />
+      </view>
+      <view name="Courier Delay Analysis" type="bar">
+        <dimension field="courier" />
+        <measure field="is_delayed" aggregation="avg" label="Delay %" />
+      </view>
+      <view name="Vendor Performance" type="bar">
+        <dimension field="vendor" />
+        <measure field="is_delayed" aggregation="avg" label="Delay %" />
+      </view>
+      <view name="City‑wise Delay Heatmap" type="map">
+        <dimension field="city" />
+        <measure field="is_delayed" aggregation="avg" label="Delay %" />
+      </view>
+      <view name="Delay Reasons" type="pie">
+        <dimension field="delay_reason" />
+        <measure field="order_id" aggregation="count" label="Count" />
+      </view>
+      <view name="Delay Category" type="bar">
+        <dimension field="delay_category" />
+        <measure field="order_id" aggregation="count" label="Count" />
+      </view>
+    </worksheet>
+  </worksheets>
+</workbook>
